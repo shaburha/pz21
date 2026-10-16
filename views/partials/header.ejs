@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> — <%= appName %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/<%= authQuery %>"><%= appName %></a>
+    <nav class="nav">
+      <a href="/<%= authQuery %>">Документы</a>
+      <a href="/add<%= authQuery %>">+ Новый документ</a>
+    </nav>
+    <div class="user">
+      <% if (user.isGuest) { %>
+        <span class="user-name">Гость</span>
+        <a class="btn btn-small" href="/login">Войти</a>
+      <% } else { %>
+        <span class="user-name"><%= user.name %></span>
+        <a class="btn btn-small btn-ghost" href="/">Выйти</a>
+      <% } %>
+    </div>
+  </header>
+  <main class="container">

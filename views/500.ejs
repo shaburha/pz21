@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<section class="error-page">
+  <div class="error-code"><%= status %></div>
+  <h1>Ошибка сервера</h1>
+  <p><%= message %></p>
+  <% if (stack) { %>
+    <pre class="stack"><%= stack %></pre>
+  <% } %>
+  <a class="btn" href="/<%= authQuery %>">На главную</a>
+</section>
+
+<%- include('partials/footer') %>

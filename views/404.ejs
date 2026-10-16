@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+
+<section class="error-page">
+  <div class="error-code">404</div>
+  <h1>Страница не найдена</h1>
+  <p>По адресу <code><%= url %></code> ничего нет: документ удалён или ссылка неверна.</p>
+  <a class="btn" href="/<%= authQuery %>">На главную</a>
+</section>
+
+<%- include('partials/footer') %>

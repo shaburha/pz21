@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<p><a href="/<%= authQuery %>">← К списку документов</a></p>
+
+<article class="card">
+  <div class="page-head">
+    <h1><%= document.title %></h1>
+    <%- include('partials/status-badge', { status: document.status }) %>
+  </div>
+
+  <dl class="meta">
+    <dt>ID</dt>
+    <dd><%= document.id %></dd>
+    <dt>Владелец</dt>
+    <dd><%= document.owner %></dd>
+    <dt>Создан</dt>
+    <dd><%= formatDate(document.createdAt) %></dd>
+    <dt>Изменён</dt>
+    <dd><%= formatDate(document.updatedAt) %></dd>
+    <dt>Участники</dt>
+    <dd>
+      <% if (document.collaborators.length > 0) { %>
+        <ul class="chips">
+          <% document.collaborators.forEach((email) => { %>
+            <li><%= email %></li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <span class="muted">документ ни с кем не расшарен</span>
+      <% } %>
+    </dd>
+  </dl>
+
+  <h2>Содержимое</h2>
+  <div class="content"><%= document.content || 'Документ пуст.' %></div>
+</article>
+
+<%- include('partials/footer') %>

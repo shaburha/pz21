@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<section class="card narrow">
+  <h1>Вход</h1>
+  <p>Эта страница доступна только авторизованным пользователям.</p>
+  <p class="muted">
+    Авторизация имитируется: сервер считает пользователя вошедшим, если в адресе есть
+    query-параметр <code>?auth=1</code>.
+  </p>
+  <a class="btn" href="<%= returnTo %>?auth=1">Войти как Иван Иванов</a>
+</section>
+
+<%- include('partials/footer') %>

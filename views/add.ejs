@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<h1>Новый документ</h1>
+
+<% if (errors.length > 0) { %>
+  <div class="errors">
+    <strong>Исправьте ошибки:</strong>
+    <ul>
+      <% errors.forEach((error) => { %>
+        <li><%= error %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form class="card form" method="post" action="/add<%= authQuery %>">
+  <label for="title">Название *</label>
+  <input id="title" name="title" type="text" value="<%= values.title %>" required minlength="3" placeholder="Например, План релиза">
+
+  <label for="content">Содержимое</label>
+  <textarea id="content" name="content" rows="6" placeholder="Текст документа"><%= values.content %></textarea>
+
+  <label for="status">Статус</label>
+  <select id="status" name="status">
+    <% Object.entries(statuses).forEach(([key, label]) => { %>
+      <option value="<%= key %>" <%= key === values.status ? 'selected' : '' %>><%= label %></option>
+    <% }) %>
+  </select>
+
+  <label for="collaborators">Участники (email через запятую)</label>
+  <input id="collaborators" name="collaborators" type="text" value="<%= values.collaborators %>" placeholder="petrov@example.com, sidorova@example.com">
+
+  <p class="muted">Владелец: <%= user.email %></p>
+
+  <div class="actions">
+    <button class="btn" type="submit">Создать</button>
+    <a class="btn btn-ghost" href="/<%= authQuery %>">Отмена</a>
+  </div>
+</form>
+
+<%- include('partials/footer') %>
